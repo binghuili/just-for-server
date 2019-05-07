@@ -1,0 +1,20 @@
+server:
+  port: 9096
+spring:
+  application:
+    name: just-for-admin
+security:
+  basic:
+    enabled: true
+  user:
+    name: paopao
+    password: 12345
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+  client:
+    healthcheck:
+      enabled: false
+    serviceUrl:
+      defaultZone: http://paopao:12345@localhost:9097/eureka

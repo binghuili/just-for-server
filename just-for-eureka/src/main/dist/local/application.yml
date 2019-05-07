@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: just-for-eureka
+  mvc:
+    static-path-pattern: /**
+  messages:
+    basename: i18n/paopao-messages
+  resources:
+    static-locations:
+    - classpath:/static/
+  security:
+    user:
+      name: paopao
+      password: 12345
+server:
+  port: 9097
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://paopao:12345@localhost:9097/eureka
+  server:
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 4000

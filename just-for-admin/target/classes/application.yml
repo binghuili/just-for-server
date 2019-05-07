@@ -1,0 +1,51 @@
+server:
+  port: 9096
+spring:
+  application:
+    name: just-for-admin
+  security:
+    user:
+      name: paopao
+      password: 12345
+  boot:
+    admin:
+      notify:
+        mail:
+          enabled: false
+          from: gxfwBoe@163.com
+          to: libinghui_forwork@163.com
+          ignore-changes: "UNKNOWN:UP"
+#          template: "classpath:/META-INF/spring-boot-admin-server/mail/status-changed.html"
+  mail:
+    host: smtp.163.com
+    username: gxfwBoe@163.com
+    password: gxfw12345
+    properties:
+      mail:
+        smtp:
+          auth: true
+        starttls:
+          enable: true
+          required: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    health-check-url-path: /actuator/health
+    metadata-map:
+      user.name: "paopao"
+      user.password: "12345"
+      startup: ${random.int}
+  client:
+    healthcheck:
+      enabled: false
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://paopao:12345@localhost:9097}/eureka
+management:
+ endpoints:
+   web:
+     exposure:
+       include: "*"
+ endpoint:
+   health:
+     show-details: ALWAYS
